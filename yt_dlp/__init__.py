@@ -33,7 +33,6 @@ from .postprocessor import (
     MetadataFromFieldPP,
     MetadataParserPP,
 )
-from .update import Updater
 from .utils import (
     NO_DEFAULT,
     POSTPROCESS_WHEN,
@@ -1002,24 +1001,11 @@ def _real_main(argv=None):
         _load_all_plugins()
 
     with YoutubeDL(ydl_opts) as ydl:
-        pre_process = opts.update_self or opts.rm_cachedir
+        pre_process = opts.rm_cachedir
         actual_use = all_urls or opts.load_info_filename
 
         if opts.rm_cachedir:
             ydl.cache.remove()
-
-        try:
-            updater = Updater(ydl, opts.update_self)
-            if opts.update_self and updater.update() and actual_use:
-                if updater.cmd:
-                    return updater.restart()
-                # This code is reachable only for zip variant in py < 3.10
-                # It makes sense to exit here, but the old behavior is to continue
-                ydl.report_warning('Restart yt-dlp to use the updated version')
-                # return 100, 'ERROR: The program must exit for the update to complete'
-        except Exception:
-            traceback.print_exc()
-            ydl._download_retcode = 100
 
         if opts.list_impersonate_targets:
 

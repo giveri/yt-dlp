@@ -79,7 +79,7 @@ If the error is `ERROR: Unable to extract ...` and you cannot reproduce it from 
 
 ###  Are you using the latest version?
 
-Before reporting any issue, type `yt-dlp -U`. This should report that you're up-to-date. This goes for feature requests as well.
+Before reporting any issue, ensure you are running the latest release from [the project's releases page](https://github.com/yt-dlp/yt-dlp/releases). This goes for feature requests as well.
 
 ###  Is the issue already documented?
 

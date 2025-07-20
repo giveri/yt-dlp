@@ -5,6 +5,8 @@ import os
 import sys
 import unittest
 
+raise unittest.SkipTest('Updater disabled')
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 

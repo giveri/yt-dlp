@@ -136,40 +136,7 @@ gpg --verify SHA2-512SUMS.sig SHA2-512SUMS
 
 
 ## UPDATE
-You can use `yt-dlp -U` to update if you are using the [release binaries](#release-files)
-
-If you [installed with pip](https://github.com/yt-dlp/yt-dlp/wiki/Installation#with-pip), simply re-run the same command that was used to install the program
-
-For other third-party package managers, see [the wiki](https://github.com/yt-dlp/yt-dlp/wiki/Installation#third-party-package-managers) or refer to their documentation
-
-<a id="update-channels"></a>
-
-There are currently three release channels for binaries: `stable`, `nightly` and `master`.
-
-* `stable` is the default channel, and many of its changes have been tested by users of the `nightly` and `master` channels.
-* The `nightly` channel has releases scheduled to build every day around midnight UTC, for a snapshot of the project's new patches and changes. This is the **recommended channel for regular users** of yt-dlp. The `nightly` releases are available from [yt-dlp/yt-dlp-nightly-builds](https://github.com/yt-dlp/yt-dlp-nightly-builds/releases) or as development releases of the `yt-dlp` PyPI package (which can be installed with pip's `--pre` flag).
-* The `master` channel features releases that are built after each push to the master branch, and these will have the very latest fixes and additions, but may also be more prone to regressions. They are available from [yt-dlp/yt-dlp-master-builds](https://github.com/yt-dlp/yt-dlp-master-builds/releases).
-
-When using `--update`/`-U`, a release binary will only update to its current channel.
-`--update-to CHANNEL` can be used to switch to a different channel when a newer version is available. `--update-to [CHANNEL@]TAG` can also be used to upgrade or downgrade to specific tags from a channel.
-
-You may also use `--update-to <repository>` (`<owner>/<repository>`) to update to a channel on a completely different repository. Be careful with what repository you are updating to though, there is no verification done for binaries from different repositories.
-
-Example usage:
-
-* `yt-dlp --update-to master` switch to the `master` channel and update to its latest release
-* `yt-dlp --update-to stable@2023.07.06` upgrade/downgrade to release to `stable` channel tag `2023.07.06`
-* `yt-dlp --update-to 2023.10.07` upgrade/downgrade to tag `2023.10.07` if it exists on the current channel
-* `yt-dlp --update-to example/yt-dlp@2023.09.24` upgrade/downgrade to the release from the `example/yt-dlp` repository, tag `2023.09.24`
-
-**Important**: Any user experiencing an issue with the `stable` release should install or update to the `nightly` release before submitting a bug report:
-```
-# To update to nightly from stable executable/binary:
-yt-dlp --update-to nightly
-
-# To install nightly with pip:
-python3 -m pip install -U --pre "yt-dlp[default]"
-```
+Automatic updates have been disabled for security reasons. Download the latest release from [the project's releases page](https://github.com/yt-dlp/yt-dlp/releases) when needed.
 
 ## DEPENDENCIES
 Python versions 3.9+ (CPython) and 3.10+ (PyPy) are supported. Other versions and implementations may or may not work correctly.
@@ -284,14 +251,6 @@ If you fork the project on GitHub, you can run your fork's [build workflow](.git
 ## General Options:
     -h, --help                      Print this help text and exit
     --version                       Print program version and exit
-    -U, --update                    Update this program to the latest version
-    --no-update                     Do not check for updates (default)
-    --update-to [CHANNEL]@[TAG]     Upgrade/downgrade to a specific version.
-                                    CHANNEL can be a repository as well. CHANNEL
-                                    and TAG default to "stable" and "latest"
-                                    respectively if omitted; See "UPDATE" for
-                                    details. Supported channels: stable,
-                                    nightly, master
     -i, --ignore-errors             Ignore download and postprocessing errors.
                                     The download will be considered successful
                                     even if the postprocessing fails
@@ -2225,9 +2184,8 @@ with yt_dlp.YoutubeDL(ydl_opts) as ydl:
 
 * **Plugins**: Extractors and PostProcessors can be loaded from an external file. See [plugins](#plugins) for details
 
-* **Self updater**: The releases can be updated using `yt-dlp -U`, and downgraded using `--update-to` if required
 
-* **Automated builds**: [Nightly/master builds](#update-channels) can be used with `--update-to nightly` and `--update-to master`
+* **Automated builds**: Prebuilt binaries are available from the [nightly](https://github.com/yt-dlp/yt-dlp-nightly-builds/releases) and [master](https://github.com/yt-dlp/yt-dlp-master-builds/releases) build repositories
 
 See [changelog](Changelog.md) or [commits](https://github.com/yt-dlp/yt-dlp/commits) for the full list of changes
 

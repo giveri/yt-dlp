@@ -361,23 +361,6 @@ def create_parser():
         action='version',
         help='Print program version and exit')
     general.add_option(
-        '-U', '--update',
-        action='store_const', dest='update_self', const=CHANNEL,
-        help=format_field(
-            is_non_updateable(), None, 'Check if updates are available. %s',
-            default=f'Update this program to the latest {CHANNEL} version'))
-    general.add_option(
-        '--no-update',
-        action='store_false', dest='update_self',
-        help='Do not check for updates (default)')
-    general.add_option(
-        '--update-to',
-        action='store', dest='update_self', metavar='[CHANNEL]@[TAG]',
-        help=(
-            'Upgrade/downgrade to a specific version. CHANNEL can be a repository as well. '
-            f'CHANNEL and TAG default to "{CHANNEL.partition("@")[0]}" and "latest" respectively if omitted; '
-            f'See "UPDATE" for details. Supported channels: {", ".join(UPDATE_SOURCES)}'))
-    general.add_option(
         '-i', '--ignore-errors',
         action='store_true', dest='ignoreerrors',
         help='Ignore download and postprocessing errors. The download will be considered successful even if the postprocessing fails')
